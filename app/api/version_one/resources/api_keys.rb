@@ -4,7 +4,7 @@ module VersionOne
   module Resources
     # The ApiKeys Grape Controller is responsive for the following endpoints
     class ApiKeys < Base
-      include V1::Authenticated
+      include VersionOne::Authenticated
 
       resource :api_keys do
         resource :user do

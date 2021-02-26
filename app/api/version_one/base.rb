@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
+  # The Base class is responsive for inheritance
   class Base < Grape::API::Instance
     prefix 'v1'
 

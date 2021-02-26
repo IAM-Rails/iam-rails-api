@@ -2,11 +2,13 @@
 
 # Main entry point to the route mounted for the API in Grape
 module Api
+  # The Api class is responsive for handle errors
   class Api < Grape::API::Instance
     helpers Helpers::Base
 
-    rescue_from ActiveRecord::RecordInvalid do |e|
-      camelized_errors = Hash[e.record.errors.messages.map { |k, v| [k.to_s.camelize(:lower), v] }]
+    rescue_from ActiveRecord::RecordInvalid do |error|
+      camelized_errors = Hash[e.record.errors.messages.map {
+        |key, value| [key.to_s.camelize(:lower), value] }]
       logger.error(e)
       error!(camelized_errors, 422)
     end
@@ -36,6 +38,6 @@ module Api
       error!({ message: 'INTERNAL_SERVER_ERROR' }, 500)
     end
 
-    mount V1::Base
+    mount VersionOne::Base
   end
 end

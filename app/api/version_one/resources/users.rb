@@ -4,7 +4,7 @@ module VersionOne
   module Resources
     # The Users Grape Controller is responsive for the following endpoints
     class Users < Base
-      include V1::Authenticated
+      include VersionOne::Authenticated
 
       resource :users do
         get do

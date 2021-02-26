@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Resources
+    # The Auth Grape Controller is responsive for auth endpoints
     class Auth < Base
       resource :auth do
         params do

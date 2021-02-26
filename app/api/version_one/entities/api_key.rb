@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Entities
+    # The ApiKeys entity is responsive for exposing model attrs
     class ApiKey < Base
       expose :id
       expose :access_token

@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Entities
+    # The User class is responsive for expose model attrs
     class User < Base
       expose :id
       expose :email

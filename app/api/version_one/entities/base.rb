@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Entities
+    # The Base class is responsive for inheritance
     class Base < Grape::Entity
       expose :id, documentation: { type: 'Integer' }
       expose :created_at, documentation: { type: 'DateTime' }
