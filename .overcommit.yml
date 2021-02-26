@@ -484,7 +484,7 @@ PrePush:
     branches: ['master', 'release', 'stage', 'test', 'deploy', 'develop']
 
   RSpec:
-    enabled: true
+    enabled: false
     description: 'Run RSpec test suite'
     required_executable: 'rspec'
 
