@@ -15,7 +15,7 @@ module Users
 
     def call
       user = create_user
-      ApiKeys::FromUser.call(user_id: user_id)
+      ApiKeys::FromUser.call(user_id: user.id)
       user
     end
 
