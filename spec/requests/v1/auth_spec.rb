@@ -40,10 +40,6 @@ RSpec.describe 'Auth API V1' do
     it 'returns correct values' do
       expect_json(name: params[:name], email: params[:email])
     end
-
-    it 'reigsters an inactive user' do
-      expect(User.find_by(email: params[:email]).is_active?).to be_falsey
-    end
   end
 
   describe 'POST v1/auth/login' do
@@ -151,37 +147,5 @@ RSpec.describe 'Auth API V1' do
     end
 
     it('return status correct code') { expect_status(expected_status_code) }
-  end
-
-  describe 'GET /authenticate' do
-    let(:users) { create_list(:user, 2) }
-    let(:base_url) { '/authenticate' }
-    let(:expected_status_code) { 200 }
-
-    let(:user_params) do
-      {
-        email: users.first.email,
-        password: users.first.password,
-        phone_number: users.first.phone_number
-      }
-    end
-
-    it_behaves_like 'contains auth token'
-  end
-
-  describe 'GET /authenticate with invalid credentials' do
-    let(:users) { create_list(:user, 2) }
-    let(:base_url) { '/authenticate' }
-    let(:expected_status_code) { 401 }
-
-    let(:user_params) do
-      {
-        email: users.first.email,
-        password: 'wrong password',
-        phone_number: users.first.phone_number
-      }
-    end
-
-    it_behaves_like 'invalid credentials'
   end
 end

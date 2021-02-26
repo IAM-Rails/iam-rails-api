@@ -1,13 +1,14 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Resources
+    # The Users Grape Controller is responsive for the following endpoints
     class Users < Base
       include V1::Authenticated
 
       resource :users do
         get do
-          users = User.where(visible: true, parent_id: current_user.id)
+          users = User.all
 
           present users, with: Entities::User
         end

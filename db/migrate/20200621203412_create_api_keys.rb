@@ -4,7 +4,6 @@ class CreateApiKeys < ActiveRecord::Migration[6.0]
       t.string :access_token
       t.datetime :expires_at
       t.integer :user_id
-      t.boolean :active
 
       t.timestamps
     end

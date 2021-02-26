@@ -285,6 +285,8 @@ PreCommit:
       - '**/*.rb'
       - '**/Gemfile'
       - '**/Rakefile'
+    exclude:
+      - '**/db/migrate/*.rb'
 
   RuboCop:
     enabled: false
@@ -300,7 +302,7 @@ PreCommit:
       - '**/Rakefile'
 
   RubyLint:
-    enabled: true
+    enabled: false
     description: 'Analyze with ruby-lint'
     required_executable: 'ruby-lint'
     flags: ['--presenter=syntastic', '--levels=error,warning']

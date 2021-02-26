@@ -25,7 +25,7 @@ RSpec.describe 'Users API V1' do
       get base_url, headers: headers
     end
 
-    it 'returns children amount' do
+    it 'returns total users' do
       expect_json_sizes(1)
     end
 
@@ -40,7 +40,7 @@ RSpec.describe 'Users API V1' do
 
   describe 'GET /users/:user_id' do
     before do
-      get "#{base_url}/#{child.id}", headers: headers
+      get "#{base_url}/#{user.id}", headers: headers
     end
 
     it 'returns status code 200' do
@@ -49,14 +49,6 @@ RSpec.describe 'Users API V1' do
 
     it 'returns right fields' do
       expect_json_types(user_type)
-    end
-
-    context 'when self id provided' do
-      before { get "#{base_url}/#{user.id}", headers: headers }
-
-      it 'returns error 403' do
-        expect_status(403)
-      end
     end
 
     context 'when wrong id provided' do
@@ -106,16 +98,7 @@ RSpec.describe 'Users API V1' do
     it 'returns right data' do
       expect_json(name: params[:name])
     end
-
-    context 'when another user id' do
-      let(:another_user) { create(:user) }
-
-      before { patch "#{base_url}/#{another_user.id}", headers: headers, params: params }
-
-      it 'returns error 401' do
-        expect_status(401)
-      end
-    end
+  end
 
   describe 'GET /users' do
     let(:routing_error_url) { '/V1/user' }

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 module Users
+  # The Register service is responsive for perform users registration
   class Register
     attr_reader :params
 
@@ -14,19 +15,14 @@ module Users
 
     def call
       user = create_user
-      register_keys(user.id)
+      ApiKeys::FromUser.call(user_id: user_id)
       user
     end
 
     private
 
     def create_user
-      params[:active] = false
       User.create!(params)
-    end
-
-    def register_keys(user_id)
-      ApiKeys::FromUser.call(user_id: user_id)
     end
   end
 end

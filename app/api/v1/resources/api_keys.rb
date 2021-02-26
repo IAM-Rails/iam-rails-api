@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
-module V1
+module VersionOne
   module Resources
+    # The ApiKeys Grape Controller is responsive for the following endpoints
     class ApiKeys < Base
       include V1::Authenticated
 
@@ -31,18 +32,6 @@ module V1
         route_param :api_key_id, type: Integer do
           get do
             api_key = ApiKey.find(permitted_params[:api_key_id])
-
-            present api_key, with: Entities::ApiKey
-          end
-
-          params do
-            optional :active, type: Boolean
-          end
-          patch do
-            api_key = ApiKey.find(permitted_params[:api_key_id])
-
-            attrs = permitted_params.except(:api_key_id)
-            api_key.update!(attrs)
 
             present api_key, with: Entities::ApiKey
           end

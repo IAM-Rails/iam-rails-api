@@ -87,25 +87,6 @@ RSpec.describe 'ApiKeys API V1' do
     end
   end
 
-  describe 'PATCH /api_keys/:api_key_id' do
-    let(:params) do
-      {
-        active: false
-      }
-    end
-    let!(:api_key) { create(:api_key) }
-
-    before { patch "#{base_url}/#{api_key.id}", headers: headers, params: params }
-
-    it 'returns status code 200' do
-      expect_status(200)
-    end
-
-    it 'returns right fields' do
-      expect_json_types(api_key_type)
-    end
-  end
-
   describe 'DELETE /api_keys/:api_key_id' do
     let!(:api_key) { create(:api_key) }
 
