@@ -1,0 +1,9 @@
+require:
+  - rubocop-airbnb
+
+Airbnb/SimpleUnless:
+  Enabled: false
+Airbnb/SimpleModifierConditional:
+  Enabled: false
+Airbnb/DefaultScope:
+  Enabled: false

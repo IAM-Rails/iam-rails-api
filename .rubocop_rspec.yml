@@ -1,0 +1,5 @@
+require:
+  - rubocop-rspec
+
+RSpec/BeforeAfterAll:
+  Enabled: false
